@@ -1,0 +1,33 @@
+﻿body {
+}
+
+.bank-group {
+    color: black;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+.bank-header {
+    text-align: left;
+    padding-left: 2.5%;
+    font-weight: bold;
+    border: 2px solid #808080;
+    border-bottom: none;
+}
+
+.bank-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    border: 2px solid #808080;
+}
+.bank-user{
+    text-align: left;
+}
+.bank-money{
+    align-self: flex-end;
+    text-align: right;
+    padding-right: 2.5%;
+}
