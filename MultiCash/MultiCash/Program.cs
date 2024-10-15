@@ -1,3 +1,6 @@
+using Data;
+using Logic;
+
 namespace MultiCash
 {
     public class Program
@@ -5,6 +8,9 @@ namespace MultiCash
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddTransient<UserService>();
+            builder.Services.AddTransient<UserRepository>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
