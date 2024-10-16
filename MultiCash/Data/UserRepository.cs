@@ -15,7 +15,7 @@ namespace Data
 			Connection conn = new();
 			using (SqlConnection sqlConnection = conn.GetConnection())
 			{
-				SqlCommand command = new SqlCommand($"SELECT * FROM User WHERE id = {id};", sqlConnection);
+				SqlCommand command = new SqlCommand($"SELECT * FROM [User] WHERE id = {id};", sqlConnection);
 				UserDTO user = new UserDTO();
 				sqlConnection.Open();
 				SqlDataReader DataReader = command.ExecuteReader();
