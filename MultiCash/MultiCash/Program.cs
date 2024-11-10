@@ -11,6 +11,8 @@ namespace MultiCash
 
             builder.Services.AddTransient<UserService>();
             builder.Services.AddTransient<UserRepository>();
+            builder.Services.AddTransient<BankService>();
+            builder.Services.AddTransient<BankAccountRepository>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

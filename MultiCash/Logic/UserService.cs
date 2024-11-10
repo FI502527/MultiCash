@@ -1,22 +1,21 @@
-﻿using Data.DTO;
-using Data;
+﻿using Data;
+using Data.DTO;
 using Logic.Model;
 
 namespace Logic
 {
 	public class UserService
 	{
-		private readonly UserRepository userRepository;
+		private readonly UserRepository _userRepository;
 		public UserService(UserRepository userRepository)
 		{
-			this.userRepository = userRepository;
+			this._userRepository = userRepository;
 		}
 		public UserModel GetUserById(int id)
 		{
-			UserDTO userDTO = userRepository.LoadUserById(id);
+			UserDTO userDTO = _userRepository.LoadUserById(id);
 			UserModel user = new UserModel(userDTO.Id, userDTO.Email, userDTO.Password);
 			return user;
 		}
-
 	}
 }

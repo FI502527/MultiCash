@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    @model UserViewModel
+@model HomeViewModel
+
 }
 
 <div class="text-center">
@@ -8,14 +9,14 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <div class="bank-group">
         <div class="bank-header">
-            Creditcard
+            @Model.Bank.AccountType.ToUpper();
         </div>
         <div class="bank-info">
             <div class="bank-user">
-                @Model.Email
+                @Model.User.Email
             </div>
             <div class="bank-money">
-                €500
+                €@Model.Bank.Amount
             </div>
         </div>
     </div>

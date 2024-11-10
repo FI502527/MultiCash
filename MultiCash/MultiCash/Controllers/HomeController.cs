@@ -10,18 +10,23 @@ namespace MultiCash.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserService _userService;
+        private readonly BankService _bankService;
 
-        public HomeController(ILogger<HomeController> logger, UserService userService)
+        public HomeController(ILogger<HomeController> logger, UserService userService, BankService bankService)
         {
             _logger = logger;
             _userService = userService;
+            _bankService = bankService;
         }
 
         public IActionResult Index()
         {
             UserModel userModel = _userService.GetUserById(1);
+            BankAccountModel bankModel = _bankService.LoadBankAccountById(1);
             UserViewModel userViewModel = new UserViewModel(userModel.Id, userModel.Email, userModel.Password);
-            return View(userViewModel);
+            BankViewModel bankViewModel = new BankViewModel(bankModel);
+            HomeViewModel homeViewModel = new HomeViewModel(userViewModel, bankViewModel);
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
