@@ -1,12 +1,20 @@
-﻿<div class="text-center">
+﻿@model BankViewModel
+
+<div class="text-center">
     <div class="new-bank">
-        <form>
-            <input type="radio" id="debit" name="bank_type" value="debit"/>
-            <label for="debit">Debit</label>
-            <input type="radio" id="credit" name="bank_type" value="credit" />
-            <label for="credit">Credit</label>
-            <input type="radio" id="saving" name="bank_type" value="saving" />
-            <label for="saving">Saving</label>
+        <h1>Request new bank account</h1>
+        <form asp-controller="Home" asp-action="AddBank">
+            <div>
+                <span class="fw-bold">Bank type:</span>
+                <br />
+                <input type="radio" id="debit" name="AccountType" value="debit"/>
+                <label for="debit">Debit</label>
+                <input type="radio" id="credit" name="AccountType" value="credit" />
+                <label for="credit">Credit</label>
+                <input type="radio" id="saving" name="AccountType" value="saving" />
+                <label for="saving">Saving</label>
+            </div>
+            <input type="submit" class="btn-primary btn" value="Send request"/>
         </form>
     </div>
 </div>

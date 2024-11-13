@@ -5,17 +5,29 @@
 }
 
 <div class="text-center">
-    <div class="bank-group">
-        <div class="bank-header">
-            @Model.Bank.AccountType.ToUpper();
-        </div>
-        <div class="bank-info">
-            <div class="bank-user">
-                @Model.User.Email
+    @if (Model.Banks.Any())
+    {
+        foreach(BankViewModel bank in Model.Banks)
+        {
+            <div class="bank-group">
+                <div class="bank-header">
+                    @bank.AccountType.ToUpper()
+                </div>
+                <div class="bank-info">
+                    <div class="bank-user">
+                        @Model.User.Email
+                    </div>
+                    <div class="bank-money">
+                        €@bank.Amount
+                    </div>
+                </div>
             </div>
-            <div class="bank-money">
-                €@Model.Bank.Amount
-            </div>
-        </div>
-    </div>
+        }
+    }
+    else
+    {
+        <span>
+            There are no bank accounts linked to your account.
+        </span>
+    }
 </div>

@@ -22,16 +22,26 @@ namespace MultiCash.Controllers
         public IActionResult Index()
         {
             UserModel userModel = _userService.GetUserById(1);
-            BankAccountModel bankModel = _bankService.LoadBankAccountById(1);
+            List<BankAccountModel> bankModels = _bankService.LoadBankAccountsByUserId(1);
             UserViewModel userViewModel = new UserViewModel(userModel.Id, userModel.Email, userModel.Password);
-            BankViewModel bankViewModel = new BankViewModel(bankModel);
-            HomeViewModel homeViewModel = new HomeViewModel(userViewModel, bankViewModel);
+            List<BankViewModel> bankViewModels = new List<BankViewModel>();
+            foreach (BankAccountModel bankModel in bankModels)
+            {
+                BankViewModel bankViewModel = new BankViewModel(bankModel);
+                bankViewModels.Add(bankViewModel);
+            }
+            HomeViewModel homeViewModel = new HomeViewModel(userViewModel, bankViewModels);
             return View(homeViewModel);
         }
-
-        public IActionResult Privacy()
+        public IActionResult Add()
         {
             return View();
+        }
+        public IActionResult AddBank(BankViewModel bankViewModel)
+        {
+            BankAccountModel bankModel = new BankAccountModel(0, 1, bankViewModel.AccountType, 0);
+            _bankService.AddBankAccount(bankModel);
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -12,6 +12,13 @@ namespace Data.DTO
 		public int UserId { get; set; }
 		public string AccountType { get; set; }
 		public int Amount { get; set; }
-
+		public BankAccountDTO() { }
+		public BankAccountDTO(int id, int userId, string accountType, int amount)
+		{
+			Id = id;
+			UserId = userId;
+			AccountType = accountType;
+			Amount = amount;
+		}
 	}
 }
