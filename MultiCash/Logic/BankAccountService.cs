@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data;
-using Data.DTO;
+using Logic.Interfaces;
 using Logic.Model;
+using Logic.DTO;
 
 namespace Logic
 {
-    public class BankService
+    public class BankAccountService
     {
-        private readonly BankAccountRepository _bankRepository;
-        public BankService(BankAccountRepository bankRepository)
+        private readonly IBankAccountRepository _bankAccountRepository;
+        public BankAccountService(IBankAccountRepository bankRepository)
         {
-            this._bankRepository = bankRepository;
+            this._bankAccountRepository = bankRepository;
         }
         public BankAccountModel LoadBankAccountById(int bankId)
         {
-            BankAccountDTO bankDTO = _bankRepository.LoadBankAccountById(bankId);
+            BankAccountDTO bankDTO = _bankAccountRepository.LoadBankAccountById(bankId);
             BankAccountModel bankModel = new BankAccountModel(bankDTO);
             return bankModel;
         }
         public List<BankAccountModel> LoadBankAccountsByUserId(int userId)
         {
-            List<BankAccountDTO> bankDTOs = _bankRepository.LoadBankAccountsByUserId(userId);
+            List<BankAccountDTO> bankDTOs = _bankAccountRepository.LoadBankAccountsByUserId(userId);
             List<BankAccountModel> bankModels = new List<BankAccountModel>();
             foreach(BankAccountDTO bankDTO  in bankDTOs)
             {
@@ -36,7 +36,7 @@ namespace Logic
         public void AddBankAccount(BankAccountModel bankModel)
         {
             BankAccountDTO bankDTO = new BankAccountDTO(bankModel.Id, bankModel.UserId, bankModel.AccountType, bankModel.Amount);
-            _bankRepository.AddBankAccount(bankDTO);
+            _bankAccountRepository.AddBankAccount(bankDTO);
             return;
         }
     }

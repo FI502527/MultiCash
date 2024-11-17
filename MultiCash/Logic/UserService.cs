@@ -1,13 +1,13 @@
-﻿using Data;
-using Data.DTO;
+﻿using Logic.Interfaces;
 using Logic.Model;
+using Logic.DTO;
 
 namespace Logic
 {
 	public class UserService
 	{
-		private readonly UserRepository _userRepository;
-		public UserService(UserRepository userRepository)
+		private readonly IUserRepository _userRepository;
+		public UserService(IUserRepository userRepository)
 		{
 			this._userRepository = userRepository;
 		}

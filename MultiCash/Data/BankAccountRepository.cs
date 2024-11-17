@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.DTO;
 using Microsoft.Data.SqlClient;
+using Logic.Interfaces;
+using Logic.DTO;
 
 namespace Data
 {
-	public class BankAccountRepository
+	public class BankAccountRepository : IBankAccountRepository
 	{
 		public BankAccountDTO LoadBankAccountById(int bankId)
 		{

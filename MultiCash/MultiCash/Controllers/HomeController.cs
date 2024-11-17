@@ -10,9 +10,9 @@ namespace MultiCash.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserService _userService;
-        private readonly BankService _bankService;
+        private readonly BankAccountService _bankService;
 
-        public HomeController(ILogger<HomeController> logger, UserService userService, BankService bankService)
+        public HomeController(ILogger<HomeController> logger, UserService userService, BankAccountService bankService)
         {
             _logger = logger;
             _userService = userService;

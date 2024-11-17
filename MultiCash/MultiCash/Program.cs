@@ -1,5 +1,6 @@
 using Data;
 using Logic;
+using Logic.Interfaces;
 
 namespace MultiCash
 {
@@ -10,9 +11,9 @@ namespace MultiCash
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddTransient<UserService>();
-            builder.Services.AddTransient<UserRepository>();
-            builder.Services.AddTransient<BankService>();
-            builder.Services.AddTransient<BankAccountRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<BankAccountService>();
+            builder.Services.AddTransient<IBankAccountRepository, BankAccountRepository>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

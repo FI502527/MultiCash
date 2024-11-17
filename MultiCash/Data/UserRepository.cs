@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.DTO;
+using Logic.DTO;
+using Logic.Interfaces;
 using Microsoft.Data.SqlClient;
 
 namespace Data
 {
-	public class UserRepository
+	public class UserRepository : IUserRepository
 	{
 		public UserDTO LoadUserById(int id)
 		{
