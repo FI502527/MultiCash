@@ -3,8 +3,8 @@
     public class HomeViewModel
     {
         public UserViewModel User { get; set; }
-        public List<BankViewModel> Banks { get; set; }
-        public HomeViewModel(UserViewModel user, List<BankViewModel> banks)
+        public List<BankAccountViewModel> Banks { get; set; }
+        public HomeViewModel(UserViewModel user, List<BankAccountViewModel> banks)
         {
             User = user;
             Banks = banks;

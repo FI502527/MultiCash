@@ -10,22 +10,34 @@ namespace Logic.Model
     public class BankAccountModel
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string AccountType { get; set; }
-        public int Amount { get; set; }
-        public BankAccountModel(int id, int userId, string accountType, int amount)
+        public int Balance { get; set; }
+        public UserModel User { get; set; }
+        public BankTypeModel BankType { get; set; }
+        public BankAccountModel(int id, int balance, UserModel user, BankTypeModel bankType)
         {
             Id = id;
-            UserId = userId;
-            AccountType = accountType;
-            Amount = amount;
+            Balance = balance;
+            User = user;
+            BankType = bankType;
         }
+        public BankAccountModel() { }
         public BankAccountModel(BankAccountDTO bankAccountDTO)
         {
             Id = bankAccountDTO.Id;
-            UserId = bankAccountDTO.UserId;
-            AccountType = bankAccountDTO.AccountType;
-            Amount = bankAccountDTO.Amount;
+            Balance = bankAccountDTO.Balance;
+        }
+        public BankAccountModel(BankAccountDTO bankAccountDTO, UserModel user)
+        {
+            Id = bankAccountDTO.Id;
+            Balance = bankAccountDTO.Balance;
+            User = user;
+        }
+        public BankAccountModel(BankAccountDTO bankAccountDTO, UserModel user, BankTypeModel bankType)
+        {
+            Id = bankAccountDTO.Id;
+            Balance = bankAccountDTO.Balance;
+            User = user;
+            BankType = bankType;
         }
     }
 }

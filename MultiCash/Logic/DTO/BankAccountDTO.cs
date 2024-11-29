@@ -9,16 +9,15 @@ namespace Logic.DTO
     public class BankAccountDTO
     {
         public int Id { get; set; }
+        public int Balance { get; set; }
+        public int BankTypeId { get; set; }
         public int UserId { get; set; }
-        public string AccountType { get; set; }
-        public int Amount { get; set; }
         public BankAccountDTO() { }
-        public BankAccountDTO(int id, int userId, string accountType, int amount)
+        public BankAccountDTO(int id, int balance, int bankTypeId)
         {
             Id = id;
-            UserId = userId;
-            AccountType = accountType;
-            Amount = amount;
+            Balance = balance;
+            BankTypeId = bankTypeId;
         }
     }
 }

@@ -23,11 +23,13 @@ namespace MultiCash.Controllers
         {
             UserModel userModel = _userService.GetUserById(1);
             List<BankAccountModel> bankModels = _bankService.LoadBankAccountsByUserId(1);
-            UserViewModel userViewModel = new UserViewModel(userModel.Id, userModel.Email, userModel.Password);
-            List<BankViewModel> bankViewModels = new List<BankViewModel>();
+            UserViewModel userViewModel = new UserViewModel(userModel);
+            List<BankAccountViewModel> bankViewModels = new List<BankAccountViewModel>();
             foreach (BankAccountModel bankModel in bankModels)
             {
-                BankViewModel bankViewModel = new BankViewModel(bankModel);
+                UserViewModel user = new UserViewModel(bankModel.User);
+                BankTypeViewModel bankType = new BankTypeViewModel(bankModel.BankType);
+                BankAccountViewModel bankViewModel = new BankAccountViewModel(bankModel.Id, bankModel.Balance, user, bankType);
                 bankViewModels.Add(bankViewModel);
             }
             HomeViewModel homeViewModel = new HomeViewModel(userViewModel, bankViewModels);
@@ -37,9 +39,11 @@ namespace MultiCash.Controllers
         {
             return View();
         }
-        public IActionResult AddBank(BankViewModel bankViewModel)
+        public IActionResult AddBank(BankTypeViewModel bankTypeViewModel)
         {
-            BankAccountModel bankModel = new BankAccountModel(0, 1, bankViewModel.AccountType, 0);
+            UserModel user = _userService.GetUserById(1);
+            BankTypeModel bankType = _bankService.GetBankTypeByName(bankTypeViewModel.Name);
+            BankAccountModel bankModel = new BankAccountModel(0, 0, user, bankType);
             _bankService.AddBankAccount(bankModel);
             return RedirectToAction("Index");
         }

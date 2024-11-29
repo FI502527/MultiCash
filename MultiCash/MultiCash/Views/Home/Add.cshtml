@@ -1,4 +1,4 @@
-﻿@model BankViewModel
+﻿@model BankTypeViewModel
 
 <div class="text-center">
     <div class="new-bank">
@@ -7,11 +7,11 @@
             <div>
                 <span class="fw-bold">Bank type:</span>
                 <br />
-                <input type="radio" id="debit" name="AccountType" value="debit"/>
+                <input type="radio" id="debit" name="Name" value="Debit"/>
                 <label for="debit">Debit</label>
-                <input type="radio" id="credit" name="AccountType" value="credit" />
+                <input type="radio" id="credit" name="Name" value="Credit" />
                 <label for="credit">Credit</label>
-                <input type="radio" id="saving" name="AccountType" value="saving" />
+                <input type="radio" id="saving" name="Name" value="Saving" />
                 <label for="saving">Saving</label>
             </div>
             <input type="submit" class="btn-primary btn" value="Send request"/>

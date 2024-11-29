@@ -7,18 +7,18 @@
 <div class="text-center">
     @if (Model.Banks.Any())
     {
-        foreach(BankViewModel bank in Model.Banks)
+        foreach(BankAccountViewModel bank in Model.Banks)
         {
             <div class="bank-group">
                 <div class="bank-header">
-                    @bank.AccountType.ToUpper()
+                    @bank.BankType.Name.ToUpper()
                 </div>
                 <div class="bank-info">
                     <div class="bank-user">
                         @Model.User.Email
                     </div>
                     <div class="bank-money">
-                        €@bank.Amount
+                        €@bank.Balance
                     </div>
                 </div>
             </div>

@@ -1,0 +1,12 @@
+﻿@model UserViewModel
+<div class="col-3">
+	<h1>Login</h1>
+	<form asp-action="LoginCheck" asp-controller="Account" >
+		<label for="Email" class="form-label">E-mail</label>
+		<input class="form-control" type="email" id="Email" name="Email"/>
+		<label for="Password" class="form-label">Password</label>
+		<input class="form-control" type="password" id="Password" name="Password"/>
+		<br />
+		<input type="submit" class="btn-primary btn" />
+	</form>
+</div>

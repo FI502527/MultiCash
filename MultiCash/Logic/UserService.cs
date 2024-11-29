@@ -14,7 +14,13 @@ namespace Logic
 		public UserModel GetUserById(int id)
 		{
 			UserDTO userDTO = _userRepository.LoadUserById(id);
-			UserModel user = new UserModel(userDTO.Id, userDTO.Email, userDTO.Password);
+			UserModel user = new UserModel(userDTO);
+			return user;
+		}
+		public UserModel LoginCheck(string email, string password)
+		{
+			UserDTO userDTO = _userRepository.LoginCheck(email, password);
+			UserModel user = new UserModel(userDTO);
 			return user;
 		}
 	}

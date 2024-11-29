@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Logic.DTO;
+using Logic.Model;
 
 namespace Logic.Interfaces
 {
@@ -12,5 +13,7 @@ namespace Logic.Interfaces
         BankAccountDTO LoadBankAccountById(int bankId);
         List<BankAccountDTO> LoadBankAccountsByUserId(int userId);
         void AddBankAccount(BankAccountDTO bankDTO);
+        public BankTypeDTO GetBankTypeById(int bankTypeId);
+        public BankTypeDTO GetBankTypeByName(string bankTypeName);
     }
 }

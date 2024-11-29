@@ -10,5 +10,6 @@ namespace Logic.Interfaces
     public interface IUserRepository
     {
         UserDTO LoadUserById(int id);
+        UserDTO LoginCheck(string username, string password);
     }
 }
