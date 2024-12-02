@@ -21,6 +21,8 @@ namespace MultiCash.Controllers
 
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetInt32("userId") == null) return RedirectToAction("Login", "Account");
+
             UserModel userModel = _userService.GetUserById(1);
             List<BankAccountModel> bankModels = _bankService.LoadBankAccountsByUserId(1);
             UserViewModel userViewModel = new UserViewModel(userModel);
@@ -46,6 +48,21 @@ namespace MultiCash.Controllers
             BankAccountModel bankModel = new BankAccountModel(0, 0, user, bankType);
             _bankService.AddBankAccount(bankModel);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            if (HttpContext.Session.GetInt32("userId") == null) return RedirectToAction("Login", "Account");
+            //int userId = (int)HttpContext.Session.GetInt32("userId");
+
+            UserModel userModel = _userService.GetUserById(1);
+            BankAccountModel bankAccountModel = _bankService.LoadBankAccountById(id);
+
+            UserViewModel userViewModel = new UserViewModel(userModel);
+            BankTypeViewModel bankType = new BankTypeViewModel(bankAccountModel.BankType);
+            BankAccountViewModel bankViewModel = new BankAccountViewModel(bankAccountModel.Id, bankAccountModel.Balance, userViewModel, bankType);
+
+            return View(bankViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

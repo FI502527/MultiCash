@@ -19,12 +19,13 @@ namespace Data
 			{
 				SqlCommand command = new SqlCommand(
                     "SELECT " +
-                    "B.id, B.balance, BT.id AS bankType, U.id" +
+                    "B.id, B.balance, BT.id AS bankType, U.id as UserId " +
                     "FROM BankAccount B " +
                     "LEFT JOIN UserBankAccount UB ON B.id = UB.bankId " +
                     "LEFT JOIN [User] U ON UB.userId = U.id " +
-                    "LEFT JOIN BankType BT ON B.bankTypeId = BT.id;" +
+                    "LEFT JOIN BankType BT ON B.bankTypeId = BT.id " +
                     "WHERE B.id = @BankId", sqlConnection);
+                command.Parameters.AddWithValue("BankId", bankId);
                 BankAccountDTO bankAccount = new BankAccountDTO();
 				sqlConnection.Open();
 				SqlDataReader DataReader = command.ExecuteReader();

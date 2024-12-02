@@ -1,0 +1,23 @@
+﻿@model BankAccountViewModel
+
+<div class="text-center">
+    <div class="bank-group">
+        <div class="bank-header">
+            @Model.BankType.Name.ToUpper()
+        </div>
+        <div class="bank-info">
+            <div class="bank-user">
+                @Model.User.Email
+            </div>
+            <div class="bank-money">
+                €@Model.Balance
+            </div>
+        </div>
+    </div>
+    <a asp-action="Transfer" asp-controller="Payment" asp-route-id="@Model.Id" class="btn btn-primary">
+        Transfer
+    </a>
+    <div class="bank-transactions">
+        No transactions yet
+    </div>
+</div>
