@@ -13,6 +13,7 @@ namespace Logic.Interfaces
         BankAccountDTO LoadBankAccountById(int bankId);
         List<BankAccountDTO> LoadBankAccountsByUserId(int userId);
         void AddBankAccount(BankAccountDTO bankDTO);
+        public void UpdateBankBalance(BankAccountDTO bankDTO);
         public BankTypeDTO GetBankTypeById(int bankTypeId);
         public BankTypeDTO GetBankTypeByName(string bankTypeName);
     }

@@ -1,0 +1,22 @@
+﻿@model TransactionViewModel
+
+<div class="text-center">
+    <div class="new-bank">
+        <h1>Transfer money</h1>
+        <form asp-controller="Transaction" asp-action="TransferMoney" >
+            <div>
+                <input class="visually-hidden" name="BankAccountId" id="BankAccountId" value="@Url.ActionContext.RouteData.Values["id"]" />
+                <span class="fw-bold">Transaction</span>
+                <div class="form-group">
+                    <label for="BankIdReceiver">IBAN</label>
+                    <input id="BankIdReceiver" name="BankIdReceiver" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="Amount">Amount</label>
+                    <input id="Amount" name="Amount" type="number" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

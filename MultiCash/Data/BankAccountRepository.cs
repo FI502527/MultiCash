@@ -93,6 +93,24 @@ namespace Data
                 return;
             }
         }
+        public void UpdateBankBalance(BankAccountDTO bankDTO)
+        {
+            Connection conn = new();
+            using (SqlConnection sqlConnection = conn.GetConnection())
+            {
+                SqlCommand command = new SqlCommand(
+                    "UPDATE [BankAccount] " +
+                    "SET balance = @Balance " +
+                    "WHERE id = @Id; ", sqlConnection);
+                command.Parameters.Add(new SqlParameter("@Balance", bankDTO.Balance));
+                command.Parameters.Add(new SqlParameter("@Id", bankDTO.Id));
+
+                sqlConnection.Open();
+                command.ExecuteNonQuery();
+                sqlConnection.Close();
+                return;
+            }
+        }
         public BankTypeDTO GetBankTypeById(int bankTypeId)
         {
             Connection conn = new();
