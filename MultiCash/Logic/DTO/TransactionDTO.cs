@@ -28,5 +28,6 @@ namespace Logic.DTO
             Pending = model.Pending;
             TransactionTypeId = model.TransactionType.Id;
         }
+        public TransactionDTO() { }
     }
 }

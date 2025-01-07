@@ -16,5 +16,6 @@ namespace Logic.Model
             Id = transactionTypeDTO.Id;
             Name = transactionTypeDTO.Name;
         }
+        public TransactionTypeModel() { }
     }
 }

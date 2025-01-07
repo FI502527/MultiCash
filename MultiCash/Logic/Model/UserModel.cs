@@ -31,5 +31,6 @@ namespace Logic.Model
             Name = userDTO.Name;
             LastName = userDTO.LastName;
         }
+        public UserModel () { }
     }
 }
